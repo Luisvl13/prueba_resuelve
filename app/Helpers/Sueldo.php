@@ -19,7 +19,7 @@ class Sueldo{
         $request_alcance_bono_individual = Sueldo::porcentaje_alcance_bono_individual($request);
         foreach ($request_alcance_bono_individual['jugadores'] as &$jugador) {
             $bono50 = $jugador['bono']/2;
-            $jugador['bono_logrado'] = ($bono50 * $jugador['alcance_bono_individual']) + ($bono50 * Sueldo::porcentaje_alcance_bono_equipo($request_alcance_bono_individual));
+            $jugador['bono_logrado'] = $bono50 * ($jugador['alcance_bono_individual']>=1?1:$jugador['alcance_bono_individual']) + $bono50 * (Sueldo::porcentaje_alcance_bono_equipo($request)>=1?1:Sueldo::porcentaje_alcance_bono_equipo($request));
         }
 
         return $request_alcance_bono_individual;
