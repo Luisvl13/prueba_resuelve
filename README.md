@@ -1,64 +1,57 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Prueba Ingeniería Resuelve
+### Problema
+---
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+El sueldo de los jugadores del Resuelve FC se compone de dos partes un sueldo fijo y un bono variable, la suma de estas dos partes es el sueldo de un jugador. El bono variable se compone de dos partes meta de goles individual y meta de goles por equipo cada una tiene un peso de 50%.
 
-## About Laravel
+Tu programa deberá hacer el cálculo del sueldo de los jugadores del Resuelve FC.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Guía de instalación
+---
+#### Requisitos del servidor
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Para poder instalar y utilizar esta API, deberá asegurarse de que su servidor cumpla con los siguientes requisitos:
+* PHP >= 7.3
+* BCMath PHP Extension
+* Ctype PHP Extension
+* Fileinfo PHP Extension
+* JSON PHP Extension
+* Mbstring PHP Extension
+* OpenSSL PHP Extension
+* PDO PHP Extension
+* Tokenizer PHP Extension
+* XML PHP Extension
+* [Composer](https://getcomposer.org/) es una librería de PHP para el manejo de dependencias.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### Instalación
+##### Laravel
+Deberá tener instalado Laravel para poder correr el proyecto si no lo tiene siga las instrucciones del siguiente link:
+* [Guia de Instalación Oficial de Laravel 8](https://laravel.com/docs/8.x/installation)
+##### Proyecto
+1. Clonar el repositorio con: `git clone https://github.com/Luisvl13/prueba_resuelve`
+2. Instalar dependencias: `composer install`
+3. Renombrar el archivo `.env.example` a `.env` ubicado en la raiz del directorio de instalación y editarlo.
+       
+       APP_DEBUG=false
+       APP_ENV=production
+       DB_HOST=
+       DB_DATABASE=prueba_resuelve
+       DB_USERNAME=
+       DB_PASSWORD=
+       
+* **APP_KEY**: Clave de encriptación para laravel.
+* **APP_DEBUG**: `false`
+* **APP_ENV**: `production`.
+* **DB_HOST**: Dominio de la conexión a la base de datos.
+* **DB_DATABASE**: Nombre de la base de datos.
+* **DB_USERNAME**: Usuario con permisos de lectura y escritura para la base de datos.
+* **DB_PASSWORD**: Contraseña del usuario.
+4. Genera key: `php artisan key:generate`
 
-## Learning Laravel
+5. Abrir su Sistema Gestor de Base de Datos y crear la base de datos `prueba_resuelve`.
+6. Abrir una terminal con la ruta raiz donde fue clonado el proyecto y correr los siguiente comandos:
+    * `php artisan key:generate` genera la key del proyecto
+    * `php artisan migrate --seed` crea las tablas y e inserta los datos precargados de muestra.
+7. Una vez configurado el proyecto se inicia con `php artisan serve` y nos levanta un servidor: 
+    * `http://127.0.0.1:8000` o su equivalente `http://localhost:8000`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

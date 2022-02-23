@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Request;
 use Response;
 
-use App\Helpers\Sueldo;
+use App\Helpers\V1\Sueldo;
 
 class SueldoController extends Controller
 {

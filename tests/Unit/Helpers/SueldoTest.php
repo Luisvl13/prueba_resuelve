@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Controller;
 
-use App\Helpers\Sueldo;
+use App\Helpers\V1\Sueldo;
 use Tests\TestCase;
 
 class SueldoTest extends TestCase
@@ -71,18 +71,6 @@ class SueldoTest extends TestCase
     {
         $alcance_bono_equipo = Sueldo::porcentaje_alcance_bono_equipo($this->request);
         $this->assertEquals(0.96, $alcance_bono_equipo);
-    }
-
-    public function test_porcentaje_alcance_bono_indivudual()
-    {
-        $request_alcance_bono_individual = Sueldo::porcentaje_alcance_bono_individual($this->request);
-        $this->assertEquals(0.95, $request_alcance_bono_individual['jugadores'][3]['alcance_bono_individual']);
-    }
-
-    public function test_bono_logrado()
-    {
-        $request_bono_logrado = Sueldo::bono_logrado($this->request);
-        $this->assertEquals(9550, $request_bono_logrado['jugadores'][3]['bono_logrado']);
     }
 
     public function test_sueldo_completo()
