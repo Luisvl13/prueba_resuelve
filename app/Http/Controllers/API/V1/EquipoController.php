@@ -14,7 +14,7 @@ class EquipoController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -32,10 +32,10 @@ class EquipoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
 		$this->ValidarParametros(Request::json()->all());
 		$datos = (object) Request::json()->all();
@@ -63,11 +63,11 @@ class EquipoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function update(Request $request, $id)
+    public function update( $id)
     {
         $this->ValidarParametros(Request::json()->all());
 		$datos = (object) Request::json()->all();
@@ -112,11 +112,11 @@ class EquipoController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
-		$data = Equipo::find($id);
+		$data = Equipo::find($id)->with('niveles')->get();
 
 		if(!$data){
 			return Response::json(array("status" => 404,"messages" => "No hay resultados"), 200);
@@ -130,7 +130,7 @@ class EquipoController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
