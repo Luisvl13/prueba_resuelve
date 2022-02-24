@@ -61,3 +61,143 @@ De manera individual
 * `docker-compose exec app php artisan test --filter test_suma_goles_anotados_equipo`
 * `docker-compose exec app php artisan test --filter test_porcentaje_alcance_bono_equipo`
 * `docker-compose exec app php artisan test --filter test_sueldo_completo`
+
+### Estructura JSON
+---
+#### Solo jugadores
+```json
+{
+   "jugadores" : [  
+      {  
+         "nombre":"Juan Perez",
+         "nivel":"C",
+         "goles":10,
+         "sueldo":50000,
+         "bono":25000,
+         "sueldo_completo":null,
+         "equipo":"rojo"
+      },
+      {  
+         "nombre":"EL Cuauh",
+         "nivel":"Cuauh",
+         "goles":30,
+         "sueldo":100000,
+         "bono":30000,
+         "sueldo_completo":null,
+         "equipo":"azul"
+      },
+      {  
+         "nombre":"Cosme Fulanito",
+         "nivel":"A",
+         "goles":7,
+         "sueldo":20000,
+         "bono":10000,
+         "sueldo_completo":null,
+         "equipo":"azul"
+
+      },
+      {  
+         "nombre":"El Rulo",
+         "nivel":"B",
+         "goles":9,
+         "sueldo":30000,
+         "bono":15000,
+         "sueldo_completo":null,
+         "equipo":"rojo"
+
+      }
+   ]
+}
+```
+
+#### Equipos
+```json
+{
+    "equipos": [
+        {
+            "id": 1,
+            "nombre": "Resuelve FC",
+            "jugadores": [
+                {
+                    "nombre": "Juan Perez",
+                    "nivel": "C",
+                    "goles": 10,
+                    "sueldo": 50000,
+                    "bono": 25000,
+                    "sueldo_completo": null,
+                    "equipo": "rojo"
+                },
+                {
+                    "nombre": "EL Cuauh",
+                    "nivel": "Cuauh",
+                    "goles": 30,
+                    "sueldo": 100000,
+                    "bono": 30000,
+                    "sueldo_completo": null,
+                    "equipo": "azul"
+                },
+                {
+                    "nombre": "Cosme Fulanito",
+                    "nivel": "A",
+                    "goles": 7,
+                    "sueldo": 20000,
+                    "bono": 10000,
+                    "sueldo_completo": null,
+                    "equipo": "azul"
+                },
+                {
+                    "nombre": "El Rulo",
+                    "nivel": "B",
+                    "goles": 9,
+                    "sueldo": 30000,
+                    "bono": 15000,
+                    "sueldo_completo": null,
+                    "equipo": "rojo"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "nombre": "Tuxtla FC",
+            "jugadores": [
+                {
+                    "nombre": "Juan Perez",
+                    "nivel": "Bronze",
+                    "goles": 6,
+                    "sueldo": 50000,
+                    "bono": 25000,
+                    "sueldo_completo": null,
+                    "equipo": "rojo"
+                },
+                {
+                    "nombre": "Pedro",
+                    "nivel": "Plata",
+                    "goles": 7,
+                    "sueldo": 100000,
+                    "bono": 30000,
+                    "sueldo_completo": null,
+                    "equipo": "azul"
+                },
+                {
+                    "nombre": "Martin",
+                    "nivel": "Oro",
+                    "goles": 16,
+                    "sueldo": 20000,
+                    "bono": 10000,
+                    "sueldo_completo": null,
+                    "equipo": "azul"
+                },
+                {
+                    "nombre": "Luis",
+                    "nivel": "Especial",
+                    "goles": 19,
+                    "sueldo": 50000,
+                    "bono": 10000,
+                    "sueldo_completo": null,
+                    "equipo": "rojo"
+                }
+            ]
+        }
+    ]
+}
+```
