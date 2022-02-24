@@ -6,6 +6,10 @@ El sueldo de los jugadores del Resuelve FC se compone de dos partes un sueldo fi
 
 Tu programa deberá hacer el cálculo del sueldo de los jugadores del Resuelve FC.
 
+Si quieres saber más de la [Prueba Ingeniería Resuelve](https://github.com/resuelve/prueba-ing-backend) 
+
+[Análisis del problema](https://github.com/Luisvl13/prueba_resuelve/blob/master/public/assets/analisis_problema.pdf) 
+
 ### Guía de instalación
 ---
 #### Requisitos del servidor
@@ -28,7 +32,7 @@ Para poder instalar y utilizar esta API, deberá asegurarse de que su servidor c
 Deberá tener instalado Laravel para poder correr el proyecto si no lo tiene siga las instrucciones del siguiente link:
 * [Guia de Instalación Oficial de Laravel 8](https://laravel.com/docs/8.x/installation)
 ##### Proyecto
-1. Clonar el repositorio con: `git clone https://github.com/Luisvl13/prueba_resuelve`
+1. Clonar el repositorio con: `git clone https://github.com/Luisvl13/prueba_resuelve.git`
 2. Instalar dependencias: `composer install`
 3. Renombrar el archivo `.env.example` a `.env` ubicado en la raiz del directorio de instalación y editarlo.
        
@@ -39,19 +43,39 @@ Deberá tener instalado Laravel para poder correr el proyecto si no lo tiene sig
        DB_USERNAME=
        DB_PASSWORD=
        
-* **APP_KEY**: Clave de encriptación para laravel.
 * **APP_DEBUG**: `false`
 * **APP_ENV**: `production`.
 * **DB_HOST**: Dominio de la conexión a la base de datos.
 * **DB_DATABASE**: Nombre de la base de datos.
 * **DB_USERNAME**: Usuario con permisos de lectura y escritura para la base de datos.
 * **DB_PASSWORD**: Contraseña del usuario.
-4. Genera key: `php artisan key:generate`
 
-5. Abrir su Sistema Gestor de Base de Datos y crear la base de datos `prueba_resuelve`.
-6. Abrir una terminal con la ruta raiz donde fue clonado el proyecto y correr los siguiente comandos:
+4. Abrir su Sistema Gestor de Base de Datos y crear la base de datos `prueba_resuelve`.
+5. Abrir una terminal con la ruta raiz donde fue clonado el proyecto y correr los siguiente comandos:
     * `php artisan key:generate` genera la key del proyecto
     * `php artisan migrate --seed` crea las tablas y e inserta los datos precargados de muestra.
-7. Una vez configurado el proyecto se inicia con `php artisan serve` y nos levanta un servidor: 
+6. Una vez configurado el proyecto se inicia con `php artisan serve` y nos levanta un servidor: 
     * `http://127.0.0.1:8000` o su equivalente `http://localhost:8000`
 
+### Documentación de la API
+---
+** La ruta para el calculo del sueldo_completo acepta Array de solo jugadores o un array de equipos con su array de jugadores **
+
+Si desea ver la documentación tiene que levantar el servidor y entrar a la siguiente ruta:
+* `http://localhost:8000/api/doc`
+
+Se vera algo asi:
+![Ejemplo documentación](https://github.com/Luisvl13/prueba_resuelve/blob/master/public/assets/documentacion.png)
+
+### Pruebas
+---
+Para ejecutar los test del proyecto puede correr:
+
+Para todas las pruebas 
+* `php artisan test`
+
+De manera individual
+* `php artisan test --filter test_suma_goles_meta_equipo`
+* `php artisan test --filter test_suma_goles_anotados_equipo`
+* `php artisan test --filter test_porcentaje_alcance_bono_equipo`
+* `php artisan test --filter test_sueldo_completo`

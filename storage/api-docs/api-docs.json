@@ -465,25 +465,7 @@
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "number",
-                                                        "example": "1"
-                                                    },
-                                                    "nivel": {
-                                                        "type": "string",
-                                                        "example": "A"
-                                                    },
-                                                    "goles_mes": {
-                                                        "type": "number",
-                                                        "example": "5"
-                                                    },
-                                                    "equipos_id": {
-                                                        "type": "integer",
-                                                        "example": "1"
-                                                    }
-                                                },
-                                                "type": "object"
+                                                "$ref": "#/components/schemas/Nivel"
                                             }
                                         }
                                     },
@@ -524,28 +506,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "properties": {
-                                    "": {
-                                        "properties": {
-                                            "nivel": {
-                                                "type": "string"
-                                            },
-                                            "goles_mes": {
-                                                "type": "integer"
-                                            },
-                                            "equipos_id": {
-                                                "type": "integer"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "nivel": "A",
-                                    "goles_mes": 5,
-                                    "equipos_id": 1
-                                }
+                                "$ref": "#/components/schemas/Nivel"
                             }
                         }
                     }
@@ -568,25 +529,7 @@
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "number",
-                                                        "example": "1"
-                                                    },
-                                                    "nivel": {
-                                                        "type": "string",
-                                                        "example": "A"
-                                                    },
-                                                    "goles_meta": {
-                                                        "type": "integer",
-                                                        "example": "5"
-                                                    },
-                                                    "nombre": {
-                                                        "type": "integer",
-                                                        "example": "2"
-                                                    }
-                                                },
-                                                "type": "object"
+                                                "$ref": "#/components/schemas/Nivel"
                                             }
                                         }
                                     },
@@ -710,28 +653,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "properties": {
-                                    "": {
-                                        "properties": {
-                                            "nivel": {
-                                                "type": "string"
-                                            },
-                                            "goles_mes": {
-                                                "type": "integer"
-                                            },
-                                            "equipos_id": {
-                                                "type": "integer"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "nivel": "A",
-                                    "goles_mes": 5,
-                                    "equipos_id": 1
-                                }
+                                "$ref": "#/components/schemas/Nivel"
                             }
                         }
                     }
@@ -754,25 +676,7 @@
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "number",
-                                                        "example": "1"
-                                                    },
-                                                    "nivel": {
-                                                        "type": "string",
-                                                        "example": "A"
-                                                    },
-                                                    "goles_meta": {
-                                                        "type": "integer",
-                                                        "example": "5"
-                                                    },
-                                                    "nombre": {
-                                                        "type": "integer",
-                                                        "example": "2"
-                                                    }
-                                                },
-                                                "type": "object"
+                                                "$ref": "#/components/schemas/Nivel"
                                             }
                                         }
                                     },
@@ -837,25 +741,7 @@
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "properties": {
-                                                    "id": {
-                                                        "type": "number",
-                                                        "example": "1"
-                                                    },
-                                                    "nivel": {
-                                                        "type": "string",
-                                                        "example": "A"
-                                                    },
-                                                    "goles_meta": {
-                                                        "type": "integer",
-                                                        "example": "5"
-                                                    },
-                                                    "nombre": {
-                                                        "type": "integer",
-                                                        "example": "2"
-                                                    }
-                                                },
-                                                "type": "object"
+                                                "$ref": "#/components/schemas/Nivel"
                                             }
                                         }
                                     },
@@ -879,37 +765,53 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "jugadores": {
+                                    "equipos": {
                                         "type": "array",
                                         "items": {
                                             "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
                                                 "nombre": {
                                                     "type": "string",
-                                                    "example": "Luis"
+                                                    "example": "Resuelve FC"
                                                 },
-                                                "nivel": {
-                                                    "type": "string",
-                                                    "example": "Cuauh"
-                                                },
-                                                "goles": {
-                                                    "type": "integer",
-                                                    "example": "21"
-                                                },
-                                                "sueldo": {
-                                                    "type": "integer",
-                                                    "example": "50000"
-                                                },
-                                                "bono": {
-                                                    "type": "integer",
-                                                    "example": "10000"
-                                                },
-                                                "sueldo_completo": {
-                                                    "type": "null",
-                                                    "example": "null"
-                                                },
-                                                "equipo": {
-                                                    "type": "string",
-                                                    "example": "rojo"
+                                                "jugadores": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "nombre": {
+                                                                "type": "string",
+                                                                "example": "Luis"
+                                                            },
+                                                            "nivel": {
+                                                                "type": "string",
+                                                                "example": "Cuauh"
+                                                            },
+                                                            "goles": {
+                                                                "type": "integer",
+                                                                "example": "21"
+                                                            },
+                                                            "sueldo": {
+                                                                "type": "integer",
+                                                                "example": "50000"
+                                                            },
+                                                            "bono": {
+                                                                "type": "integer",
+                                                                "example": "10000"
+                                                            },
+                                                            "sueldo_completo": {
+                                                                "type": "null",
+                                                                "example": "null"
+                                                            },
+                                                            "equipo": {
+                                                                "type": "string",
+                                                                "example": "rojo"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
                                                 }
                                             },
                                             "type": "object"
@@ -928,37 +830,53 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "jugadores": {
+                                        "equipos": {
                                             "type": "array",
                                             "items": {
                                                 "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
                                                     "nombre": {
                                                         "type": "string",
-                                                        "example": "Luis"
+                                                        "example": "Resuelve FC"
                                                     },
-                                                    "nivel": {
-                                                        "type": "string",
-                                                        "example": "Cuauh"
-                                                    },
-                                                    "goles": {
-                                                        "type": "integer",
-                                                        "example": "21"
-                                                    },
-                                                    "sueldo": {
-                                                        "type": "integer",
-                                                        "example": "50000"
-                                                    },
-                                                    "bono": {
-                                                        "type": "integer",
-                                                        "example": "10000"
-                                                    },
-                                                    "sueldo_completo": {
-                                                        "type": "integer",
-                                                        "example": "59550"
-                                                    },
-                                                    "equipo": {
-                                                        "type": "string",
-                                                        "example": "rojo"
+                                                    "jugadores": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "nombre": {
+                                                                    "type": "string",
+                                                                    "example": "Luis"
+                                                                },
+                                                                "nivel": {
+                                                                    "type": "string",
+                                                                    "example": "Cuauh"
+                                                                },
+                                                                "goles": {
+                                                                    "type": "integer",
+                                                                    "example": "21"
+                                                                },
+                                                                "sueldo": {
+                                                                    "type": "integer",
+                                                                    "example": "50000"
+                                                                },
+                                                                "bono": {
+                                                                    "type": "integer",
+                                                                    "example": "10000"
+                                                                },
+                                                                "sueldo_completo": {
+                                                                    "type": "integer",
+                                                                    "example": "59550"
+                                                                },
+                                                                "equipo": {
+                                                                    "type": "string",
+                                                                    "example": "rojo"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
                                                     }
                                                 },
                                                 "type": "object"
@@ -971,6 +889,54 @@
                         }
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Equipo": {
+                "description": "Class Equipo",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": "1"
+                    },
+                    "nivel": {
+                        "type": "string",
+                        "example": "A"
+                    },
+                    "goles_mes": {
+                        "type": "number",
+                        "example": "5"
+                    },
+                    "equipos_id": {
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "Nivel": {
+                "description": "Class Nivel",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": "1"
+                    },
+                    "nivel": {
+                        "type": "string",
+                        "example": "A"
+                    },
+                    "goles_mes": {
+                        "type": "number",
+                        "example": "5"
+                    },
+                    "equipos_id": {
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
             }
         }
     },

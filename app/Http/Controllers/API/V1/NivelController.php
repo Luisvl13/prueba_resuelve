@@ -25,13 +25,7 @@ class NivelController extends Controller
      *              @OA\Property(
      *                 type="array",
      *                 property="data",
-     *                 @OA\Items(
-     *                     type="object",
-    *                      @OA\Property(property="id",type="number",example="1"),
-    *                      @OA\Property(property="nivel",type="string",example="A"),
-    *                      @OA\Property(property="goles_mes",type="number",example="5"),
-    *                      @OA\Property(property="equipos_id",type="int",example="1"),
-     *                 )
+     *                 @OA\Items(ref="#/components/schemas/Nivel")
      *             )
      *         )
      *     ),
@@ -67,26 +61,8 @@ class NivelController extends Controller
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                 @OA\Property(
-     *                      type="object",
-     *                      @OA\Property(
-     *                          property="nivel",
-     *                          type="string"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="goles_mes",
-     *                          type="int"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="equipos_id",
-     *                          type="int"
-     *                      ),
-     *                 ),
-     *                 example={
-     *                     "nivel":"A",
-     *                     "goles_mes":5,
-     *                     "equipos_id":1,
-     *                }
+     *                 type="object",
+     *                 ref="#/components/schemas/Nivel",
      *             )
      *         )
      *      ),
@@ -101,10 +77,7 @@ class NivelController extends Controller
      *                 property="data",
      *                 @OA\Items(
      *                     type="object",
-     *                     @OA\Property(property="id",type="number",example="1"),
-     *                     @OA\Property(property="nivel",type="string",example="A"),
-     *                     @OA\Property(property="goles_meta",type="int",example="5"),
-     *                     @OA\Property(property="nombre",type="int",example="2"),
+     *                     ref="#/components/schemas/Nivel",
      *                 )
      *             )
      *          )
@@ -167,26 +140,8 @@ class NivelController extends Controller
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                 @OA\Property(
-     *                      type="object",
-     *                      @OA\Property(
-     *                          property="nivel",
-     *                          type="string"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="goles_mes",
-     *                          type="int"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="equipos_id",
-     *                          type="int"
-     *                      ),
-     *                 ),
-     *                 example={
-     *                     "nivel":"A",
-     *                     "goles_mes":5,
-     *                     "equipos_id":1,
-     *                }
+     *                 type="object",
+     *                 ref="#/components/schemas/Nivel",
      *             )
      *         )
      *      ),
@@ -200,11 +155,7 @@ class NivelController extends Controller
      *                 type="array",
      *                 property="data",
      *                 @OA\Items(
-     *                     type="object",
-     *                     @OA\Property(property="id",type="number",example="1"),
-     *                     @OA\Property(property="nivel",type="string",example="A"),
-     *                     @OA\Property(property="goles_meta",type="int",example="5"),
-     *                     @OA\Property(property="nombre",type="int",example="2"),
+     *                     type="object", ref="#/components/schemas/Nivel",
      *                 )
      *             )
      *          )
@@ -321,11 +272,7 @@ class NivelController extends Controller
      *                 type="array",
      *                 property="data",
      *                 @OA\Items(
-     *                     type="object",
-     *                     @OA\Property(property="id",type="number",example="1"),
-     *                     @OA\Property(property="nivel",type="string",example="A"),
-     *                     @OA\Property(property="goles_meta",type="int",example="5"),
-     *                     @OA\Property(property="nombre",type="int",example="2"),
+     *                     type="object", ref="#/components/schemas/Nivel",
      *                 )
      *             )
      *         )

@@ -15,7 +15,13 @@ class EquiposSeeder extends Seeder
     public function run()
     {
         DB::table('equipos')->insert([
-            'nombre' => 'ResuelveFC',
+            'nombre' => 'Resuelve FC',
+            'created_at'=>'2022-02-21 21:50:28',
+            'updated_at'=>'2022-02-21 21:50:28',
+            'deleted_at'=>NULL
+        ]);
+        DB::table('equipos')->insert([
+            'nombre' => 'Tuxtla FC',
             'created_at'=>'2022-02-21 21:50:28',
             'updated_at'=>'2022-02-21 21:50:28',
             'deleted_at'=>NULL

@@ -46,5 +46,37 @@ class NivelesSeeder extends Seeder
             'updated_at'=>'2022-02-21 21:50:28',
             'deleted_at'=>NULL
         ]);
+        DB::table('niveles')->insert([
+            'nivel' => 'Bronze',
+            'goles_mes' => 5,
+            'equipos_id' => 2,
+            'created_at'=>'2022-02-21 21:50:28',
+            'updated_at'=>'2022-02-21 21:50:28',
+            'deleted_at'=>NULL
+        ]);
+        DB::table('niveles')->insert([
+            'nivel' => 'Plata',
+            'goles_mes' => 10,
+            'equipos_id' => 2,
+            'created_at'=>'2022-02-21 21:50:28',
+            'updated_at'=>'2022-02-21 21:50:28',
+            'deleted_at'=>NULL
+        ]);
+        DB::table('niveles')->insert([
+            'nivel' => 'Oro',
+            'goles_mes' => 15,
+            'equipos_id' => 2,
+            'created_at'=>'2022-02-21 21:50:28',
+            'updated_at'=>'2022-02-21 21:50:28',
+            'deleted_at'=>NULL
+        ]);
+        DB::table('niveles')->insert([
+            'nivel' => 'Especial',
+            'goles_mes' => 20,
+            'equipos_id' => 2,
+            'created_at'=>'2022-02-21 21:50:28',
+            'updated_at'=>'2022-02-21 21:50:28',
+            'deleted_at'=>NULL
+        ]);
     }
 }

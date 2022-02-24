@@ -57,7 +57,8 @@ class SueldoTest extends TestCase
 
     public function test_suma_goles_meta_equipo()
     {
-        $goles_meta_equipo = Sueldo::suma_goles_meta_equipo($this->request);
+        $equipos_id = 1;
+        $goles_meta_equipo = Sueldo::suma_goles_meta_equipo($this->request,$equipos_id);
         $this->assertEquals(50, $goles_meta_equipo);
     }
 
@@ -69,13 +70,15 @@ class SueldoTest extends TestCase
 
     public function test_porcentaje_alcance_bono_equipo()
     {
-        $alcance_bono_equipo = Sueldo::porcentaje_alcance_bono_equipo($this->request);
+        $equipos_id = 1;
+        $alcance_bono_equipo = Sueldo::porcentaje_alcance_bono_equipo($this->request,$equipos_id);
         $this->assertEquals(0.96, $alcance_bono_equipo);
     }
 
     public function test_sueldo_completo()
     {
-        $request_sueldo_completo = Sueldo::sueldo_completo($this->request);
+        $equipos_id = 1;
+        $request_sueldo_completo = Sueldo::sueldo_completo($this->request,$equipos_id);
         $this->assertEquals(59550, $request_sueldo_completo['jugadores'][3]['sueldo_completo']);
     }
 }
