@@ -12,9 +12,38 @@ use App\Models\V1\Nivel;
 class NivelController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * Obtener lista de Niveles
+     * @OA\Get (
+     *     path="/api/v1/niveles",
+     *     tags={"Niveles"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de los niveles y sus niveles",
+     *         @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Operación realizada con exito"),
+     *              @OA\Property(
+     *                 type="array",
+     *                 property="data",
+     *                 @OA\Items(
+     *                     type="object",
+    *                      @OA\Property(property="id",type="number",example="1"),
+    *                      @OA\Property(property="nivel",type="string",example="A"),
+    *                      @OA\Property(property="goles_mes",type="number",example="5"),
+    *                      @OA\Property(property="equipos_id",type="int",example="1"),
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Error",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="404"),
+     *              @OA\Property(property="error",type="string",example="Mensaje de error"),
+     *          )
+     *      )
+     * )
      */
     public function index()
     {
@@ -30,10 +59,73 @@ class NivelController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
+     * Crea un nivel
+     * @OA\Post (
+     *     path="/api/v1/niveles",
+     *     tags={"Niveles"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="nivel",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="goles_mes",
+     *                          type="int"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="equipos_id",
+     *                          type="int"
+     *                      ),
+     *                 ),
+     *                 example={
+     *                     "nivel":"A",
+     *                     "goles_mes":5,
+     *                     "equipos_id":1,
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Nivel creado",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Registro creado"),
+     *              @OA\Property(
+     *                 type="array",
+     *                 property="data",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id",type="number",example="1"),
+     *                     @OA\Property(property="nivel",type="string",example="A"),
+     *                     @OA\Property(property="goles_meta",type="int",example="5"),
+     *                     @OA\Property(property="nombre",type="int",example="2"),
+     *                 )
+     *             )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Error",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="400"),
+     *              @OA\Property(property="error",type="string",example="Conflicto"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Error",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="500"),
+     *              @OA\Property(property="error",type="string",example="Mensaje de error"),
+     *          )
+     *      )
+     * )
      */
     public function store()
     {
@@ -61,11 +153,71 @@ class NivelController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
+     * Actualiza un niveles
+     * @OA\Put (
+     *     path="/api/v1/niveles/{id}",
+     *     tags={"Niveles"},
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(type="int")
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="nivel",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="goles_mes",
+     *                          type="int"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="equipos_id",
+     *                          type="int"
+     *                      ),
+     *                 ),
+     *                 example={
+     *                     "nivel":"A",
+     *                     "goles_mes":5,
+     *                     "equipos_id":1,
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Nivel creado",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Modificación realizada con exito"),
+     *              @OA\Property(
+     *                 type="array",
+     *                 property="data",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id",type="number",example="1"),
+     *                     @OA\Property(property="nivel",type="string",example="A"),
+     *                     @OA\Property(property="goles_meta",type="int",example="5"),
+     *                     @OA\Property(property="nombre",type="int",example="2"),
+     *                 )
+     *             )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Error",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="500"),
+     *              @OA\Property(property="error",type="string",example="Mensaje de error"),
+     *          )
+     *      )
+     * )
      */
     public function update($id)
     {
@@ -111,10 +263,29 @@ class NivelController extends Controller
 	}
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
+     * Detalle del nivel
+     * @OA\Get (
+     *     path="/api/v1/niveles/{id}",
+     *     tags={"Niveles"},
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(type="int")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Operación realizada con exito",
+     *         @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Operación realizada con exito"),
+     *              @OA\Property(property="data", type="array",
+     *                  example={"id": 1,"nivel": "A","goles_mes": 5,"equipos_id": 1},
+     *                  @OA\Items(type="integer")
+     *              )
+     *         )
+     *     ),
+     * )
      */
     public function show($id)
     {
@@ -129,10 +300,37 @@ class NivelController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
+     * Eliminar Nivel
+     * @OA\Delete (
+     *     path="/api/v1/niveles/{id}",
+     *     tags={"Niveles"},
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(type="int")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Eliminar nivel",
+     *         @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Registro eliminado"
+     *              ),
+     *              @OA\Property(
+     *                 type="array",
+     *                 property="data",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id",type="number",example="1"),
+     *                     @OA\Property(property="nivel",type="string",example="A"),
+     *                     @OA\Property(property="goles_meta",type="int",example="5"),
+     *                     @OA\Property(property="nombre",type="int",example="2"),
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
      */
     public function destroy($id)
     {
@@ -156,7 +354,7 @@ class NivelController extends Controller
 		}
     }
 
-        /**
+    /**
 	 * Validad los parametros recibidos, Esto no tiene ruta de acceso es un metodo privado del controlador.
 	 *
 	 * @param  Request  $request que corresponde a los parametros enviados por el cliente

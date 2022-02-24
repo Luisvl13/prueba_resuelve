@@ -1,0 +1,980 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Prueba Resuelve",
+        "description": "Prueba Resuelve",
+        "contact": {
+            "email": "luisvl13@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/equipos": {
+            "get": {
+                "tags": [
+                    "Equipos"
+                ],
+                "summary": "Obtener lista de Equipos",
+                "operationId": "d29638a9b7c4317a2acd4a09086dfa86",
+                "responses": {
+                    "200": {
+                        "description": "Lista de los equipos y sus niveles",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Operación realizada con exito"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nombre": {
+                                                        "type": "string",
+                                                        "example": "Resuelve FC"
+                                                    },
+                                                    "niveles": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "example": "1"
+                                                                },
+                                                                "nivel": {
+                                                                    "type": "string",
+                                                                    "example": "A"
+                                                                },
+                                                                "goles_mes": {
+                                                                    "type": "number",
+                                                                    "example": "5"
+                                                                },
+                                                                "equipos_id": {
+                                                                    "type": "integer",
+                                                                    "example": "1"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Mensaje de error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Equipos"
+                ],
+                "summary": "Crea un equipo",
+                "operationId": "d7039c7ff01f1cfdb5320c1b5fd72ea7",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "nombre": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "nombre": "Resuelve FC"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Equipo creado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Registro creado"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nombre": {
+                                                        "type": "string",
+                                                        "example": "Resuelve FC"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "400"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Conflicto"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "500"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Mensaje de error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/equipos/{id}": {
+            "get": {
+                "tags": [
+                    "Equipos"
+                ],
+                "summary": "Detalle del equipo",
+                "operationId": "bf6b12d2c24b44349940348e24d93ce3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con exito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Operación realizada con exito"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nombre": {
+                                                        "type": "string",
+                                                        "example": "Resuelve FC"
+                                                    },
+                                                    "niveles": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "example": "1"
+                                                                },
+                                                                "nivel": {
+                                                                    "type": "string",
+                                                                    "example": "A"
+                                                                },
+                                                                "goles_mes": {
+                                                                    "type": "number",
+                                                                    "example": "5"
+                                                                },
+                                                                "equipos_id": {
+                                                                    "type": "integer",
+                                                                    "example": "1"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Equipos"
+                ],
+                "summary": "Actualiza un equipo",
+                "operationId": "e9f8bcd2e34a074dff8e60376f7e84ff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "nombre": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "nombre": "Resuelve FC"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Equipo creado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Modificación realizada con exito"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nombre": {
+                                                        "type": "string",
+                                                        "example": "Resuelve FC"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "500"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Mensaje de error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Equipos"
+                ],
+                "summary": "Eliminar Equipo",
+                "operationId": "193ce28c64906a22697527ad15fa964b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Eliminar equipo",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Registro eliminado"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nombre": {
+                                                        "type": "string",
+                                                        "example": "Resuelve FC"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/niveles": {
+            "get": {
+                "tags": [
+                    "Niveles"
+                ],
+                "summary": "Obtener lista de Niveles",
+                "operationId": "1518053541d6fdd54013ba811f65c5cb",
+                "responses": {
+                    "200": {
+                        "description": "Lista de los niveles y sus niveles",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Operación realizada con exito"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nivel": {
+                                                        "type": "string",
+                                                        "example": "A"
+                                                    },
+                                                    "goles_mes": {
+                                                        "type": "number",
+                                                        "example": "5"
+                                                    },
+                                                    "equipos_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Mensaje de error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Niveles"
+                ],
+                "summary": "Crea un nivel",
+                "operationId": "45a33ec6721fe598589c82d81b865a99",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "nivel": {
+                                                "type": "string"
+                                            },
+                                            "goles_mes": {
+                                                "type": "integer"
+                                            },
+                                            "equipos_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "nivel": "A",
+                                    "goles_mes": 5,
+                                    "equipos_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Nivel creado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Registro creado"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nivel": {
+                                                        "type": "string",
+                                                        "example": "A"
+                                                    },
+                                                    "goles_meta": {
+                                                        "type": "integer",
+                                                        "example": "5"
+                                                    },
+                                                    "nombre": {
+                                                        "type": "integer",
+                                                        "example": "2"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "400"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Conflicto"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "500"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Mensaje de error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/niveles/{id}": {
+            "get": {
+                "tags": [
+                    "Niveles"
+                ],
+                "summary": "Detalle del nivel",
+                "operationId": "b395421efdb104992aa5d4d53ccc9bdf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación realizada con exito",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Operación realizada con exito"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "integer"
+                                            },
+                                            "example": {
+                                                "id": 1,
+                                                "nivel": "A",
+                                                "goles_mes": 5,
+                                                "equipos_id": 1
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Niveles"
+                ],
+                "summary": "Actualiza un niveles",
+                "operationId": "4317a51ca66e8500af6d97c864813cd2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "nivel": {
+                                                "type": "string"
+                                            },
+                                            "goles_mes": {
+                                                "type": "integer"
+                                            },
+                                            "equipos_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "nivel": "A",
+                                    "goles_mes": 5,
+                                    "equipos_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Nivel creado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Modificación realizada con exito"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nivel": {
+                                                        "type": "string",
+                                                        "example": "A"
+                                                    },
+                                                    "goles_meta": {
+                                                        "type": "integer",
+                                                        "example": "5"
+                                                    },
+                                                    "nombre": {
+                                                        "type": "integer",
+                                                        "example": "2"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "500"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Mensaje de error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Niveles"
+                ],
+                "summary": "Eliminar Nivel",
+                "operationId": "f1e0b77f2846bc4668e158888eea34e8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Eliminar nivel",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": "200"
+                                        },
+                                        "messages": {
+                                            "type": "string",
+                                            "example": "Registro eliminado"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nivel": {
+                                                        "type": "string",
+                                                        "example": "A"
+                                                    },
+                                                    "goles_meta": {
+                                                        "type": "integer",
+                                                        "example": "5"
+                                                    },
+                                                    "nombre": {
+                                                        "type": "integer",
+                                                        "example": "2"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/sueldos": {
+            "post": {
+                "tags": [
+                    "Sueldos"
+                ],
+                "summary": "Genera Sueldos",
+                "operationId": "8b32a50b8ca85227152959505b1e3a69",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "jugadores": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "nombre": {
+                                                    "type": "string",
+                                                    "example": "Luis"
+                                                },
+                                                "nivel": {
+                                                    "type": "string",
+                                                    "example": "Cuauh"
+                                                },
+                                                "goles": {
+                                                    "type": "integer",
+                                                    "example": "21"
+                                                },
+                                                "sueldo": {
+                                                    "type": "integer",
+                                                    "example": "50000"
+                                                },
+                                                "bono": {
+                                                    "type": "integer",
+                                                    "example": "10000"
+                                                },
+                                                "sueldo_completo": {
+                                                    "type": "null",
+                                                    "example": "null"
+                                                },
+                                                "equipo": {
+                                                    "type": "string",
+                                                    "example": "rojo"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Agrega Sueldo completos de los jugadores",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "jugadores": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "nombre": {
+                                                        "type": "string",
+                                                        "example": "Luis"
+                                                    },
+                                                    "nivel": {
+                                                        "type": "string",
+                                                        "example": "Cuauh"
+                                                    },
+                                                    "goles": {
+                                                        "type": "integer",
+                                                        "example": "21"
+                                                    },
+                                                    "sueldo": {
+                                                        "type": "integer",
+                                                        "example": "50000"
+                                                    },
+                                                    "bono": {
+                                                        "type": "integer",
+                                                        "example": "10000"
+                                                    },
+                                                    "sueldo_completo": {
+                                                        "type": "integer",
+                                                        "example": "59550"
+                                                    },
+                                                    "equipo": {
+                                                        "type": "string",
+                                                        "example": "rojo"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

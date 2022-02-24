@@ -12,9 +12,47 @@ use App\Models\V1\Equipo;
 class EquipoController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * Obtener lista de Equipos
+     * @OA\Get (
+     *     path="/api/v1/equipos",
+     *     tags={"Equipos"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de los equipos y sus niveles",
+     *         @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Operación realizada con exito"),
+     *              @OA\Property(
+     *                 type="array",
+     *                 property="data",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id",type="number",example="1"),
+     *                     @OA\Property(property="nombre",type="string",example="Resuelve FC"),
+     *                     @OA\Property(
+     *                          type="array",
+     *                          property="niveles",
+     *                          @OA\Items(
+     *                              type="object",
+     *                              @OA\Property(property="id",type="number",example="1"),
+     *                              @OA\Property(property="nivel",type="string",example="A"),
+     *                              @OA\Property(property="goles_mes",type="number",example="5"),
+     *                              @OA\Property(property="equipos_id",type="int",example="1"),
+     *                          )
+     *                      )
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Error",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="404"),
+     *              @OA\Property(property="error",type="string",example="Mensaje de error"),
+     *          )
+     *      )
+     * )
      */
     public function index()
     {
@@ -30,10 +68,59 @@ class EquipoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
+     * Crea un equipo
+     * @OA\Post (
+     *     path="/api/v1/equipos",
+     *     tags={"Equipos"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(property="nombre",type="string"
+     *                      ),
+     *                 ),
+     *                 example={
+     *                     "nombre":"Resuelve FC",
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Equipo creado",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Registro creado"),
+     *              @OA\Property(
+     *                 type="array",
+     *                 property="data",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id",type="number",example="1"),
+     *                     @OA\Property(property="nombre",type="string",example="Resuelve FC"),
+     *                 )
+     *             )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Error",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="400"),
+     *              @OA\Property(property="error",type="string",example="Conflicto"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Error",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="500"),
+     *              @OA\Property(property="error",type="string",example="Mensaje de error"),
+     *          )
+     *      )
+     * )
      */
     public function store()
     {
@@ -61,11 +148,57 @@ class EquipoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
+     * Actualiza un equipo
+     * @OA\Put (
+     *     path="/api/v1/equipos/{id}",
+     *     tags={"Equipos"},
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(type="int")
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(property="nombre",type="string"
+     *                      ),
+     *                 ),
+     *                 example={
+     *                     "nombre":"Resuelve FC",
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Equipo creado",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Modificación realizada con exito"),
+     *              @OA\Property(
+     *                 type="array",
+     *                 property="data",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id",type="number",example="1"),
+     *                     @OA\Property(property="nombre",type="string",example="Resuelve FC"),
+     *                 )
+     *             )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Error",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="500"),
+     *              @OA\Property(property="error",type="string",example="Mensaje de error"),
+     *          )
+     *      )
+     * )
      */
     public function update( $id)
     {
@@ -109,14 +242,49 @@ class EquipoController extends Controller
 	}
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
+     * Detalle del equipo
+     * @OA\Get (
+     *     path="/api/v1/equipos/{id}",
+     *     tags={"Equipos"},
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(type="int")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Operación realizada con exito",
+     *         @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Operación realizada con exito"),
+     *              @OA\Property(
+     *                 type="array",
+     *                 property="data",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id",type="number",example="1"),
+     *                     @OA\Property(property="nombre",type="string",example="Resuelve FC"),
+     *                     @OA\Property(
+     *                          type="array",
+     *                          property="niveles",
+     *                          @OA\Items(
+     *                              type="object",
+     *                              @OA\Property(property="id",type="number",example="1"),
+     *                              @OA\Property(property="nivel",type="string",example="A"),
+     *                              @OA\Property(property="goles_mes",type="number",example="5"),
+     *                              @OA\Property(property="equipos_id",type="int",example="1"),
+     *                          )
+     *                      )
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
      */
     public function show($id)
     {
-		$data = Equipo::find($id)->with('niveles')->get();
+		$data = Equipo::find($id)->with('niveles')->first();
 
 		if(!$data){
 			return Response::json(array("status" => 404,"messages" => "No hay resultados"), 200);
@@ -127,10 +295,35 @@ class EquipoController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
+     * Eliminar Equipo
+     * @OA\Delete (
+     *     path="/api/v1/equipos/{id}",
+     *     tags={"Equipos"},
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(type="int")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Eliminar equipo",
+     *         @OA\JsonContent(
+     *              @OA\Property(property="status",type="int",example="200"),
+     *              @OA\Property(property="messages",type="string",example="Registro eliminado"
+     *              ),
+     *              @OA\Property(
+     *                 type="array",
+     *                 property="data",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(property="id",type="number",example="1"),
+     *                     @OA\Property(property="nombre",type="string",example="Resuelve FC"),
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
      */
     public function destroy($id)
     {
