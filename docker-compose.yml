@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+    app:
+        build:
+            args:
+                user: luisvl
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: resuelve
+        container_name: resuelve-app
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        networks:
+            - resuelve
+
+    db:
+        image: mysql:5.7
+        container_name: resuelve-db
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        networks:
+            - resuelve
+
+    nginx:
+        image: nginx:alpine
+        container_name: resuelve-nginx
+        restart: unless-stopped
+        ports:
+            - 8000:80
+        volumes:
+            - ./:/var/www
+            - ./docker-compose/nginx:/etc/nginx/conf.d/
+        networks:
+            - resuelve
+
+networks:
+    resuelve:
+        driver: bridge
